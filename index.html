@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Interaktif: Sistem Bilangan Real</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .slide { display: none; }
+        .slide.active { display: block; }
+        /* Style custom untuk garis bilangan */
+        .number-line {
+            position: relative;
+            height: 6px;
+            background-color: #cbd5e1;
+            margin: 60px 0;
+        }
+        .number-line-mark {
+            position: absolute;
+            width: 3px;
+            height: 18px;
+            background-color: #475569;
+            top: -6px;
+        }
+        .number-line-label {
+            position: absolute;
+            top: 18px;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans h-screen flex flex-col overflow-hidden">
+
+    <header class="bg-blue-900 text-white px-8 py-5 flex justify-between items-center shadow-md">
+        <div>
+            <h1 class="text-2xl font-black tracking-wide">SISTEM BILANGAN REAL</h1>
+            <p class="text-sm text-blue-200 mt-1">Presentasi Interaktif Informatika & Matematika</p>
+        </div>
+        <div class="text-base bg-blue-800 px-4 py-2 rounded text-right">
+            <span class="font-bold block">Universitas BSI</span>
+            <span class="text-sm text-blue-300">Kelas 15.1A.31</span>
+        </div>
+    </header>
+
+    <main class="flex-1 flex overflow-hidden">
+        
+        <section class="w-1/2 p-10 border-r-2 border-slate-200 overflow-y-auto flex flex-col justify-between bg-white">
+            
+            <div id="slides-container" class="space-y-4">
+                <div class="slide active" data-page="1">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 1 pada PPT</span>
+                    <h2 class="text-4xl font-extrabold text-blue-900 mt-6 mb-6 leading-tight">Sistem Bilangan &<br>Bilangan Real</h2>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">Mengubah teori matematika murni menjadi logika teknologi.</p>
+                    <p class="text-base text-slate-400 font-medium">Kelompok Presentasi Matakuliah Kalkulus</p>
+                </div>
+
+                <div class="slide" data-page="2">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 2 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Anggota Kelompok Novel</h2>
+                    <div class="bg-slate-50 p-6 rounded-xl border-2 border-slate-200">
+                        <ul class="list-disc pl-6 text-xl text-slate-700 space-y-3 font-semibold">
+                            <li>Muhammad Novel <span class="text-slate-400 font-normal">(15251236)</span></li>
+                            <li>Zulfikar Ali Zaki <span class="text-slate-400 font-normal">(15251101)</span></li>
+                            <li>Mohammad Rasya Malikha <span class="text-slate-400 font-normal">(15250390)</span></li>
+                            <li>Samuel Defano Muji Santoso <span class="text-slate-400 font-normal">(15250916)</span></li>
+                            <li>Felix Siburian JohnCharlos <span class="text-slate-400 font-normal">(15251257)</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide" data-page="3">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 3 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Pendahuluan Sistem Bilangan</h2>
+                    <p class="text-slate-600 leading-relaxed mb-6 text-xl">
+                        Bilangan merupakan konsep di dalam matematika yang digunakan untuk menyatakan kuantitas pada perhitungan, pengukuran, dan pencacahan.
+                    </p>
+                    <div class="mt-6 p-5 bg-slate-100 rounded-xl text-base text-slate-700 border border-slate-200">
+                        <span class="font-bold text-lg block text-blue-900 mb-2">Catatan Notasi Ringkas (Halaman 5):</span>
+                        <ul class="list-disc pl-6 space-y-2 text-lg">
+                            <li>Himpunan Bilangan Real dinotasikan dengan <b class="text-blue-600">R</b></li>
+                            <li>Himpunan Bilangan Kompleks dinotasikan dengan <b class="text-blue-600">C</b></li>
+                            <li>Himpunan Bilangan Bulat dinotasikan dengan <b class="text-blue-600">Z</b></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="slide" data-tool="imajiner-tool" data-page="6">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 6 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-3">Bilangan Imajiner (i)</h2>
+                    <p class="text-base text-slate-500 mb-6 font-mono font-bold bg-slate-100 p-2 rounded inline-block">Rumus dasar: i = √(-1) atau i² = -1</p>
+                    <p class="text-slate-700 mb-6 text-lg leading-relaxed">
+                        Bilangan berupa akar pangkat genap dari bilangan negatif dan tidak jelas Sifatnya, apakah positif atau negatif. Contohnya: √(-4) = 2i.
+                    </p>
+                    <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500">
+                        <span class="text-sm font-bold text-blue-800 uppercase block mb-2">💻 Analogi Pemrograman:</span>
+                        <p class="text-base text-slate-700 leading-relaxed font-medium">
+                            Dipakai untuk sistem koordinat 2 arah (x, y) sekaligus seperti pada pembuatan game engine, grafis 3D, atau pemetaan lokasi objek bergerak.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="slide" data-tool="riil-tool" data-page="8">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 8 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Bilangan Riil (Real)</h2>
+                    <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                        Semua bilangan yang dapat dinyatakan dalam bentuk desimal (termasuk pecahan, bulat, positif, negatif, nol, akar). Sifat utamanya: jika dikuadratkan, hasilnya tidak pernah negatif.
+                    </p>
+                    <div class="bg-slate-100 p-4 rounded-xl mb-6 text-base space-y-2 font-medium">
+                        <p>🔹 <b>Sifat 1:</b> Dapat dinyatakan pada garis bilangan secara kontinu.</p>
+                        <p>🔹 <b>Sifat 2:</b> Memenuhi hukum Komutatif, Asosiatif, dan Distributif.</p>
+                    </div>
+                    <div class="bg-blue-50 p-5 rounded-xl border-l-4 border-blue-500">
+                        <span class="text-sm font-bold text-blue-800 uppercase block mb-2">💻 Analogi Pemrograman:</span>
+                        <p class="text-base text-slate-700 font-medium">
+                            Digunakan untuk tipe data <b>float / desimal</b> yang butuh presisi tinggi seperti status persentase baterai HP (75.5%) atau pembacaan sensor IoT.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="slide" data-tool="rasional-tool" data-page="10">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 10 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Rasional & Irasional</h2>
+                    <div class="space-y-4 text-base text-slate-700 leading-relaxed font-medium">
+                        <p class="p-3 bg-slate-50 rounded-lg border-l-4 border-emerald-500"><strong class="text-xl block text-slate-900 mb-1">Bilangan Rasional:</strong> Dapat ditulis sebagai pecahan biasa (a/b). Angka desimal di belakang koma akan berhenti atau berulang secara teratur (Contoh: 1/2 = 0.5 atau 1/3 = 0.333...).</p>
+                        <p class="p-3 bg-slate-50 rounded-lg border-l-4 border-amber-500"><strong class="text-xl block text-slate-900 mb-1">Bilangan Irasional:</strong> Tidak bisa diubah jadi pecahan biasa. Angka di belakang koma tidak pernah habis dan tidak membentuk pola berulang (Contoh: nilai Pi = 3.14159... atau √2 = 1.4142...).</p>
+                    </div>
+                </div>
+
+                <div class="slide" data-tool="interval-tool" data-page="16">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 16 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Interval (Selang)</h2>
+                    <p class="text-slate-700 text-lg mb-4 leading-relaxed">
+                        Himpunan bagian dari bilangan real yang dibatasi oleh satu atau dua batas bilangan tertentu pada garis bilangan.
+                    </p>
+                    <ul class="list-disc pl-6 text-base text-slate-700 space-y-3 font-semibold bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <li><span class="text-blue-600">Selang Terbuka (a, b):</span> Batas titik ujungnya tidak ikut dihitung (a &lt; x &lt; b).</li>
+                        <li><span class="text-blue-600">Selang Tertutup [a, b]:</span> Batas titik ujungnya masuk dalam perhitungan (a ≤ x ≤ b).</li>
+                    </ul>
+                </div>
+
+                <div class="slide" data-tool="kuadrat-tool" data-page="21">
+                    <span class="text-sm font-bold bg-blue-100 text-blue-800 px-3 py-1.5 rounded tracking-wider">Halaman 21 pada PPT</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-6 mb-6">Operasi Pengkuadratan</h2>
+                    <p class="text-slate-700 text-lg mb-6 leading-relaxed">
+                        Operasi kuadrat secara umum tidak mempertahankan arah pertidaksamaan jika ada nilai negatif (Contoh: -4 &lt; 1 tetapi ketika dikuadratkan hasilnya membalik menjadi 16 &gt; 1). Namun, tanda ketaksamaan akan bertahan mutlak jika kedua belah sisi bernilai positif.
+                    </p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center pt-5 border-t-2 border-slate-100 mt-8">
+                <button id="btn-prev" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-6 py-3 rounded-lg transition text-base disabled:opacity-40" disabled>Sebelumnya</button>
+                <span id="slide-indicator" class="text-lg text-blue-900 font-black bg-blue-50 px-4 py-2 rounded-lg border border-blue-200">Halaman 1 pada PPT</span>
+                <button id="btn-next" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded-lg transition text-base">Berikutnya</button>
+            </div>
+        </section>
+
+        <section class="w-1/2 p-10 bg-slate-100 overflow-y-auto flex flex-col justify-center items-center">
+            
+            <div id="default-tool" class="tool-view text-center p-6 active">
+                <div class="text-7xl mb-6">🔢</div>
+                <h3 class="text-2xl font-black text-slate-800 mb-3">Simulasi Interaktif</h3>
+                <p class="text-base text-slate-500 max-w-sm font-medium">Pilih halaman materi di sebelah kiri untuk memunculkan alat hitung interaktif di sini.</p>
+            </div>
+
+            <div id="imajiner-tool" class="tool-view hidden w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="font-black text-blue-900 mb-4 border-b-2 pb-2 text-xl">Visualisator Bilangan Imajiner</h3>
+                <div class="space-y-4 mb-6">
+                    <div>
+                        <label class="text-sm font-bold block text-slate-600 mb-1">Bagian Riil (Horizontal): <span id="val-real" class="text-blue-600 font-black text-lg">3</span></label>
+                        <input type="range" id="input-real" min="-5" max="5" value="3" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+                    <div>
+                        <label class="text-sm font-bold block text-slate-600 mb-1">Bagian Imajiner (Vertikal): <span id="val-imag" class="text-blue-600 font-black text-lg">4</span>i</label>
+                        <input type="range" id="input-imag" min="-5" max="5" value="4" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+                </div>
+                <div class="w-full h-56 bg-slate-50 rounded-xl border-2 border-slate-300 relative flex items-center justify-center">
+                    <div class="absolute w-full h-0.5 bg-slate-400"></div>
+                    <div class="absolute h-full w-0.5 bg-slate-400"></div>
+                    <div id="dot-complex" class="absolute w-5 h-5 bg-red-500 rounded-full border-2 border-white shadow-lg transition-all duration-200" style="bottom: calc(50% + 32px - 10px); left: calc(50% + 24px - 10px);"></div>
+                </div>
+                <div class="text-center mt-4 font-mono text-xl font-bold text-slate-700 bg-slate-50 p-2 rounded-xl border">
+                    Bentuk Kompleks: <span id="text-complex" class="text-red-600 font-black">3 + 4i</span>
+                </div>
+            </div>
+
+            <div id="riil-tool" class="tool-view hidden w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="font-black text-blue-900 mb-4 border-b-2 pb-2 text-xl">Uji Eksistensi Bilangan Riil</h3>
+                <p class="text-sm text-slate-500 mb-4 font-medium">Masukkan nilai numerik bebas:</p>
+                <input type="number" id="input-riil-val" value="-5" class="w-full p-3 border-2 border-slate-300 rounded-xl mb-4 text-center text-2xl font-black focus:border-blue-600 focus:outline-none">
+                <button onclick="hitungRiil()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-base hover:bg-blue-700 transition shadow">Kuadratkan Angka</button>
+                <div class="p-4 bg-slate-50 rounded-xl text-base space-y-3 font-mono border">
+                    <p>Hasil Kuadrat: <span id="res-kuadrat" class="font-black text-blue-600 text-lg">25</span></p>
+                    <p class="font-bold text-green-600 bg-green-50 p-2 rounded text-center border border-green-200">BILANGAN RIIL (Hasil Kuadrat selalu ≥ 0)</p>
+                </div>
+            </div>
+
+            <div id="rasional-tool" class="tool-view hidden w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="font-black text-blue-900 mb-4 border-b-2 pb-2 text-xl">Uji Bentuk Struktur Desimal</h3>
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <button onclick="cekAngka('1/3', '0.3333333333333...', 'RASIONAL (Berulang Teratur)')" class="bg-slate-100 hover:bg-blue-100 p-3 rounded-xl text-sm font-bold border border-slate-200 transition">Pecahan 1/3</button>
+                    <button onclick="cekAngka('2/5', '0.4 (Berhenti Pasti)', 'RASIONAL (Berhenti Pasti)')" class="bg-slate-100 hover:bg-blue-100 p-3 rounded-xl text-sm font-bold border border-slate-200 transition">Pecahan 2/5</button>
+                    <button onclick="cekAngka('√2', '1.414213562373095...', 'IRASIONAL (Tak Berhingga & Acak)')" class="bg-slate-100 hover:bg-blue-100 p-3 rounded-xl text-sm font-bold border border-slate-200 transition">Nilai √2</button>
+                    <button onclick="cekAngka('Pi (π)', '3.141592653589793...', 'IRASIONAL (Tak Berhingga & Acak)')" class="bg-slate-100 hover:bg-blue-100 p-3 rounded-xl text-sm font-bold border border-slate-200 transition">Konstanta Pi (π)</button>
+                </div>
+                <div class="p-5 bg-slate-50 rounded-xl border space-y-3 text-base font-mono">
+                    <p>Simbol: <span id="ras-simbol" class="font-black text-slate-900">-</span></p>
+                    <p class="break-all">Desimal: <span id="ras-desimal" class="font-black text-blue-600">-</span></p>
+                    <p>Kategori: <span id="ras-kat" class="font-black text-red-600">-</span></p>
+                </div>
+            </div>
+
+            <div id="interval-tool" class="tool-view hidden w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="font-black text-blue-900 mb-4 border-b-2 pb-2 text-xl">Simulator Rentang Garis Interval</h3>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="text-xs font-bold text-slate-600 block mb-1">Batas Kiri (a):</label>
+                        <input type="number" id="int-a" value="2" class="w-full p-2 border-2 rounded-xl text-base font-bold text-center">
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-slate-600 block mb-1">Batas Kanan (b):</label>
+                        <input type="number" id="int-b" value="6" class="w-full p-2 border-2 rounded-xl text-base font-bold text-center">
+                    </div>
+                </div>
+                <div class="flex gap-6 justify-center text-sm font-bold mb-4 bg-slate-50 p-2 rounded-xl border">
+                    <label class="cursor-pointer flex items-center gap-1"><input type="radio" name="int-type" value="open" checked> Terbuka (a, b)</label>
+                    <label class="cursor-pointer flex items-center gap-1"><input type="radio" name="int-type" value="closed"> Tertutup [a, b]</label>
+                </div>
+                <button onclick="renderInterval()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-base hover:bg-blue-700 transition shadow">Gambarkan Area Rentang</button>
+                
+                <div class="number-line mt-8">
+                    <div class="number-line-mark" style="left: 10%;"></div><span class="number-line-label" style="left: 10%;">0</span>
+                    <div class="number-line-mark" style="left: 30%;"></div><span class="number-line-label" style="left: 30%;">2</span>
+                    <div class="number-line-mark" style="left: 50%;"></div><span class="number-line-label" style="left: 50%;">4</span>
+                    <div class="number-line-mark" style="left: 70%;"></div><span class="number-line-label" style="left: 70%;">6</span>
+                    <div class="number-line-mark" style="left: 90%;"></div><span class="number-line-label" style="left: 90%;">8</span>
+                    <div id="interval-highlight" class="absolute h-3 bg-blue-500 opacity-40 top-[-4px] rounded" style="left: 30%; width: 40%;"></div>
+                </div>
+                <p id="interval-text" class="text-center font-mono text-sm font-black text-blue-950 mt-6 bg-blue-50 p-2 rounded-xl border border-blue-200">Notasi Himpunan: { x | 2 &lt; x &lt; 6 }</p>
+            </div>
+
+            <div id="kuadrat-tool" class="tool-view hidden w-full max-w-lg bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="font-black text-blue-900 mb-4 border-b-2 pb-2 text-xl">Uji Pembalikan Tanda Kuadrat</h3>
+                <div class="grid grid-cols-2 gap-4 text-center font-mono mb-4 text-base bg-slate-50 p-3 rounded-xl border">
+                    <div>Sisi A = <span class="font-black text-red-600">-4</span></div>
+                    <div>Sisi B = <span class="font-black text-green-600">1</span></div>
+                </div>
+                <div class="text-center text-base font-bold mb-5 text-slate-700">
+                    Kondisi Awal: <span class="bg-yellow-100 px-3 py-1 rounded-lg border border-yellow-200">-4 &lt; 1 (Benar)</span>
+                </div>
+                <button onclick="prosesKuadrat()" class="w-full bg-blue-600 text-white font-bold py-3 rounded-xl text-base hover:bg-blue-700 transition shadow">Hitung Nilai Kuadrat Sisi</button>
+                <div id="kuadrat-result-box" class="hidden p-4 bg-red-50 text-base rounded-xl space-y-2 font-mono text-slate-700 border border-red-200">
+                    <p>🔹 Sisi A² = (-4) × (-4) = <b class="text-lg text-slate-900">16</b></p>
+                    <p>🔹 Sisi B² = 1 × 1 = <b class="text-lg text-slate-900">1</b></p>
+                    <p class="font-black text-red-700 text-center text-lg mt-3 bg-white p-2 border-2 rounded-xl shadow-sm">Kondisi Baru: 16 &gt; 1 (Tanda Membalik!)</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="bg-slate-200 border-t border-slate-300 px-8 py-2.5 flex justify-between text-xs font-semibold text-slate-500">
+        <div>Klik tombol navigasi untuk menyesuaikan visual halaman materi.</div>
+        <div>Kelompok Novel © 2026</div>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const toolViews = document.querySelectorAll('.tool-view');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const indicator = document.getElementById('slide-indicator');
+        let currentSlide = 0;
+
+        function updateSlide() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentSlide);
+            });
+            
+            toolViews.forEach(view => view.classList.add('hidden'));
+            
+            const activeSlide = slides[currentSlide];
+            const targetToolId = activeSlide.getAttribute('data-tool');
+            const pageNum = activeSlide.getAttribute('data-page');
+            
+            if (targetToolId) {
+                document.getElementById(targetToolId).classList.remove('hidden');
+            } else {
+                document.getElementById('default-tool').classList.remove('hidden');
+            }
+
+            indicator.textContent = `Halaman ${pageNum} pada PPT`;
+            btnPrev.disabled = currentSlide === 0;
+            btnNext.textContent = currentSlide === slides.length - 1 ? 'Selesai' : 'Berikutnya';
+        }
+
+        btnNext.addEventListener('click', () => {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlide();
+            } else {
+                alert('Presentasi Selesai! Selamat berdiskusi kelompok.');
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        // ================= WIDGET PROGRAM INTERAKTIF =================
+        
+        // 1. Tool Imajiner
+        const inputReal = document.getElementById('input-real');
+        const inputImag = document.getElementById('input-imag');
+        const valReal = document.getElementById('val-real');
+        const valImag = document.getElementById('val-imag');
+        const dotComplex = document.getElementById('dot-complex');
+        const textComplex = document.getElementById('text-complex');
+
+        function updateComplexPlane() {
+            const r = parseInt(inputReal.value);
+            const i = parseInt(inputImag.value);
+            valReal.textContent = r;
+            valImag.textContent = i;
+            
+            const leftPercent = 50 + (r * 8);
+            const bottomPercent = 50 + (i * 8);
+            dotComplex.style.left = `calc(${leftPercent}% - 10px)`;
+            dotComplex.style.bottom = `calc(${bottomPercent}% - 10px)`;
+            
+            textComplex.textContent = `${r} ${i >= 0 ? '+ ' + i : '- ' + Math.abs(i)}i`;
+        }
+        inputReal.addEventListener('input', updateComplexPlane);
+        inputImag.addEventListener('input', updateComplexPlane);
+
+        // 2. Tool Riil
+        function hitungRiil() {
+            const val = parseFloat(document.getElementById('input-riil-val').value);
+            if (isNaN(val)) return;
+            const kuadrat = val * val;
+            document.getElementById('res-kuadrat').textContent = kuadrat;
+        }
+
+        // 3. Tool Rasional / Irasional
+        function cekAngka(simbol, desimal, kategori) {
+            document.getElementById('ras-simbol').textContent = simbol;
+            document.getElementById('ras-desimal').textContent = desimal;
+            document.getElementById('ras-kat').textContent = kategori;
+        }
+
+        // 4. Tool Garis Interval
+        function renderInterval() {
+            const a = parseFloat(document.getElementById('int-a').value);
+            const b = parseFloat(document.getElementById('int-b').value);
+            const type = document.querySelector('input[name="int-type"]:checked').value;
+            const highlight = document.getElementById('interval-highlight');
+            const text = document.getElementById('interval-text');
+            
+            if (a >= b) {
+                alert("Nilai batas kiri harus selalu lebih kecil dari batas kanan!");
+                return;
+            }
+
+            const startPercent = 10 + (a * 10);
+            const widthPercent = (b - a) * 10;
+            
+            highlight.style.left = `${startPercent}%`;
+            highlight.style.width = `${widthPercent}%`;
+            
+            if (type === 'open') {
+                text.textContent = `Notasi Himpunan: { x | ${a} < x < ${b} } atau bentuk selang (${a}, ${b})`;
+            } else {
+                text.textContent = `Notasi Himpunan: { x | ${a} <= x <= ${b} } atau bentuk selang [${a}, ${b}]`;
+            }
+        }
+
+        // 5. Tool Kuadrat
+        function prosesKuadrat() {
+            document.getElementById('kuadrat-result-box').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
